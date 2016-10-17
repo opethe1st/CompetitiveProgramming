@@ -22,9 +22,7 @@ int main(){
         cout<<canLadyBugHappy(b)<<endl;
     } 
 
-    //testing for_each
-    string b="fdg";
-    //for_each(b.begin(),b.end(),[](char c){cout<<c<<" ";});
+    
 }
 
 string ladyBugHappy(string s){
