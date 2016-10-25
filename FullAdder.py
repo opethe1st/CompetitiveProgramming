@@ -1,8 +1,7 @@
-# Enter your code here. Read input from STDIN. Print output to STDOUT
+""""IEEEXtreme 10
+""""
 def convert210(a,base,digitsDic):
-    #digits will be a dictionary.
-    #a.strip()
-    #print digitsDic
+    "convert a in base with digitsDic set of digitsDic to a base 10 number"
     n = 0
     for digit in a:
         if digit!=' ':
@@ -11,6 +10,7 @@ def convert210(a,base,digitsDic):
     return n
 
 def convert2Base(n,base,reversedigitsDic):
+    "convert n in base 10 to base base using the reversedigitsDic"
     a =[]
     while n>0:
         lastdigit=n%base
@@ -32,7 +32,8 @@ for i in xrange(len(digits)):
 reverseDigitsDic = {}
 for i in xrange(len(digits)):
     reverseDigitsDic[i] = digits[i]
-print reverseDigitsDic
+
+#tests
 i = convert210(a,int(base),digitsDic)
 j = convert210(b[1:],int(base),digitsDic)
 k = i+j
