@@ -33,7 +33,7 @@ def dfs(start,u):
     global G
     for v in G[u]:
         if not visited[v]:
-            ns[v]=ns[u]+coprime[start][v]
+            ns[v]=ns[u]+coprime[v][start]
             prev[v]=u
             dfs(start,v)
 
