@@ -24,32 +24,34 @@ expected worst-case time complexity is O(N);
 expected worst-case space complexity is O(N) (not counting the storage required for input arguments).
 """
 
+
 def solution(s):
-    #print s,
+    # print s,
     stack = []
     for l in s:
-        #print l,stack
-        if l=='(' or l=='{' or l == '[':
+        # print l,stack
+        if l == '(' or l == '{' or l == '[':
             stack.append(l)
-        elif l==')':
-            if len(stack)>0 and stack[-1]=='(':
+        elif l == ')':
+            if len(stack) > 0 and stack[-1] == '(':
                 stack.pop(-1)
             else:
                 return 0
-        elif l==']':
-            if len(stack)>0 and stack[-1]=='[':
+        elif l == ']':
+            if len(stack) > 0 and stack[-1] == '[':
                 stack.pop(-1)
             else:
                 return 0
-        elif l=='}':
-            if len(stack)>0 and stack[-1]=='{':
+        elif l == '}':
+            if len(stack) > 0 and stack[-1] == '{':
                 stack.pop(-1)
             else:
                 return 0
-        #print l,stack
-    if not stack or len(s)==0:
+        # print l,stack
+    if not stack or len(s) == 0:
         return 1
     else:
         return 0
+
 
 print solution('{[()()]}')
