@@ -6,6 +6,7 @@ def solution(A):
     intersectPoints.sort()
     count = 0
     ans = 0
+    maxcount = 0
     # print intersectPoints
     for point in intersectPoints:
         if point[1] == 0:
@@ -13,8 +14,7 @@ def solution(A):
             count += 1
         else:
             count -= 1
-    if ans > 10000000:
-        return -1
+        maxcount = ma(maxcount, count)
     return ans
 
 print solution([1, 5, 2, 1, 4, 0])

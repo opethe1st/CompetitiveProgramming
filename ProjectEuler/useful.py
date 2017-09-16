@@ -70,3 +70,17 @@ def is_prime(n, _precision_for_huge_n=16):
     return not any(_try_composite(a, d, n, s) 
                    for a in _known_primes[:_precision_for_huge_n])
 _known_primes = [2, 3]
+
+def eulertotient(n):
+
+    res = n
+    i = 2
+    while i*i<=n:
+        if n%i==0:
+            res -= res/i
+            while n%i == 0:
+                n/=i
+        i+=1
+    if n>1:
+        res -= res/n
+    return res
