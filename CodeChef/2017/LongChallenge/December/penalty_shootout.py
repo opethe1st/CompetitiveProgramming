@@ -1,14 +1,16 @@
 '''CodeChef Long Challenge December, 2017'''
 
-# pylint: disable=R0903, missing-docstring
+# pylint: disable=missing-docstring
+from enum import Enum
+
 
 NORMAL_PENALITIES = 5
 
-class Penalty:
+class Penalty(Enum):
     GOAL = '1'
     MISS = '0'
 
-class State:
+class State(Enum):
     A_WIN = 'TEAM-A'
     B_WIN = 'TEAM-B '
     DRAW = 'TIE'
