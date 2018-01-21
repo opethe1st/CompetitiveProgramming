@@ -2,27 +2,21 @@ from unittest import main, TestCase
 from bisect import bisect_left
 
 def solution(A):
-    def find_max_non_negative_position(gs, i, s):
+
+    def find_max_non_negative_position(gs, s):
         keys = [val for val, pos in gs]
-        return gs[bisect_left(keys, s)][1]
+        _, pos = gs[bisect_left(keys, s)]
+        return pos
+
     prefix_sum = [0 for i in range(len(A)+1)]
     for i, value in enumerate(A):
         prefix_sum[i+1] = prefix_sum[i] + value
-    # print(prefix_sum)
     greatest_sum_position_backwards = [(prefix_sum[-1], len(A))]
     for position, value in reversed(list(enumerate(prefix_sum))):
         if greatest_sum_position_backwards[-1][0] < value:
             greatest_sum_position_backwards.append((value, position))
-    # print(greatest_sum_position_backwards)
     max_length = 0
     for i, s in enumerate(prefix_sum):
-        # this is basically a find the left most position
-        position = None
-        # for v, p in greatest_sum_position_backwards:
-        #     if v >= s:
-        #         position = p
-        #         break
-        # assert (position == find_max_non_negative_position(gs=greatest_sum_position_backwards, i=i, s=s))
         position = find_max_non_negative_position(gs=greatest_sum_position_backwards, i=i, s=s)
         if position and max_length < (position - i):
             max_length = (position - i)
