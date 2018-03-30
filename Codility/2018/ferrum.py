@@ -10,6 +10,7 @@ class Pair:
     def __lt__(self, other):
         return self.value < other.value
 
+
 def solution(A):
     prefix_sum = [0 for i in range(len(A)+1)]
     for i, value in enumerate(A):
@@ -25,6 +26,7 @@ def solution(A):
         if right_position and max_length < (right_position - left_position):
             max_length = (right_position - left_position)
     return max_length
+
 
 class TestFunction(TestCase):
 
