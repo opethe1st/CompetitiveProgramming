@@ -36,17 +36,12 @@ def maximum_packages(s_arr, k_arr , r_arr, c_arr):
     for container in containers:
         while packages and container.radius <= packages[0].length/math.sqrt(2):
             packages.pop(0)
-        while packages and packages[0].copies <= container.capacity and container.radius > packages[0].length/math.sqrt(2):
-            packages_in_containers += packages[0].copies
-            container.capacity -= packages[0].copies # capacity left
-            packages.pop(0) # remove all containers of this type
-            # print(container)
-        if not(container.capacity):
-            continue
-        while packages and packages[0].copies > container.capacity and container.radius > packages[0].length/math.sqrt(2):
-            packages_in_containers += container.capacity
-            packages[0].copies -= container.capacity
-            continue
+        while packages and container.capacity > 0 and packages[0].copies > 0 and container.radius > packages[0].length/math.sqrt(2):
+            container.capacity -= 1
+            packages[0].copies -= 1
+            packages_in_containers += 1
+            if packages[0].copies == 0:
+                packages.pop(0)
     return packages_in_containers
 
 
