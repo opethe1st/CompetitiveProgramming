@@ -16,7 +16,6 @@ def solution(arr, brr):
             minSwap[i+1][1] if arr[i]<arr[i+1] and brr[i]<brr[i+1] else float('inf'),
             minSwap[i+1][0] if arr[i]<brr[i+1] and brr[i]<arr[i+1] else float('inf'),
         )
-    # print(minSwap)
     return min(minSwap[0]) if min(minSwap[0]) != float('inf') else -1
 
 

@@ -22,7 +22,11 @@ def solution(A):
             greatest_sum_position_backwards.append(Pair(value=value, position=position))
     max_length = 0
     for left_position, value in enumerate(prefix_sum):
-        right_position = greatest_sum_position_backwards[bisect_left(greatest_sum_position_backwards, Pair(value=value, position=left_position))].position
+        left_insert_position = bisect_left(
+                greatest_sum_position_backwards,
+                Pair(value=value, position=left_position)
+                )
+        right_position = greatest_sum_position_backwards[left_insert_position].position
         if right_position and max_length < (right_position - left_position):
             max_length = (right_position - left_position)
     return max_length
