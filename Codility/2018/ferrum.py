@@ -1,6 +1,7 @@
 from unittest import TestCase, main
 from bisect import bisect_left
 
+
 class Pair:
 
     def __init__(self, value, position):
@@ -12,9 +13,9 @@ class Pair:
 
 
 def solution(A):
-    prefix_sum = [0 for i in range(len(A)+1)]
+    prefix_sum = [0 for i in range(len(A) + 1)]
     for i, value in enumerate(A):
-        prefix_sum[i+1] = prefix_sum[i] + value
+        prefix_sum[i + 1] = prefix_sum[i] + value
 
     greatest_sum_position_backwards = [Pair(value=prefix_sum[-1], position=len(A))]
     for position, value in reversed(list(enumerate(prefix_sum))):
@@ -23,9 +24,9 @@ def solution(A):
     max_length = 0
     for left_position, value in enumerate(prefix_sum):
         left_insert_position = bisect_left(
-                greatest_sum_position_backwards,
-                Pair(value=value, position=left_position)
-                )
+            greatest_sum_position_backwards,
+            Pair(value=value, position=left_position)
+        )
         right_position = greatest_sum_position_backwards[left_insert_position].position
         if right_position and max_length < (right_position - left_position):
             max_length = (right_position - left_position)
@@ -81,6 +82,7 @@ class TestFunction(TestCase):
     def test_12(self):
         ans = solution(A=[-1, 1, -1, -1, 1])
         self.assertEqual(ans, 4)
+
 
 if __name__ == '__main__':
     main()
