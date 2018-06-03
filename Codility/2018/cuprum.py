@@ -11,7 +11,7 @@ def solution(S):
         signatures[index+1] = signatures[index]^(1<<LOWERCASE_LETTERS_AND_DIGITS_DICT[letter])
 
     longestValidStringLength = 0
-    # signatureExtremaDict keeps track of the max and min positions where this signature is found - between these positions a number occurs
+    # signatureExtremaDict keeps track of the max and min positions where this signature is found - between these positions all the characters occur
     # an even number of times
     signatureExtremaDict = {}
     for index, signature in enumerate(signatures):
