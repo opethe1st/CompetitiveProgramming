@@ -1,3 +1,4 @@
+
 def solution(arr):
     contiguous_zeros = []
     count = 0
@@ -15,4 +16,4 @@ def solution(arr):
     for item in contiguous_zeros:
         sum_false_nodes += sum_pascal(item)
     ans = sum_pascal(len(arr)) - sum_false_nodes
-    return ans if ans <= 1000000000000 else 1000000000000
+    return ans if ans <= 1_000_000_000_000 else 1_000_000_000_000
