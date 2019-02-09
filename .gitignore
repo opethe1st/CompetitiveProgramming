@@ -12,3 +12,4 @@ TopTalTest/
 input*
 output*
 .noseids
+.mypy*
