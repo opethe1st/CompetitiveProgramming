@@ -25,18 +25,13 @@ def modinv10power9plus7(a):
 
 def solution(N, K, M):
     NInverse = modinv10power9plus7(N)
-    probabilityOfFailure = (N - 1) * NInverse
-    currentMultiplier = 1
+    probabilityOfFailure = (1 - NInverse) % TEN_TO_POWER_OF_9_PLUS_7
     ans = 0
-    while M > 1:
-        if N < K:
-            ans += currentMultiplier * NInverse
-            N = N + K
-            currentMultiplier *= probabilityOfFailure
-        else:
-            N %= K
-        M -= 1
-    ans += currentMultiplier * modinv10power9plus7(N)
+    currentMultiplier = 1
+    ans = (1 - pow(probabilityOfFailure, (M - 1) // 2 + 1, TEN_TO_POWER_OF_9_PLUS_7))
+    currentMultiplier = pow(probabilityOfFailure, (M - 1) // 2 + 1, TEN_TO_POWER_OF_9_PLUS_7)
+    if (M % 2) == 0:
+        ans += currentMultiplier * modinv10power9plus7(N + K)
     return ans % TEN_TO_POWER_OF_9_PLUS_7
 
 
