@@ -7,9 +7,9 @@ uproblem*
 Practice/
 Toptal/
 TopTalTest/
-*.in
 *.pyc
 input*
 output*
 .noseids
 .mypy*
+.virtualenv

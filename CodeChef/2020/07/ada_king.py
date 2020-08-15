@@ -20,8 +20,17 @@ class Board:
     def __init__(self):
         self.rows = [['X' for _ in range(8)] for _ in range(8)]
 
+    @property
+    def n_rows(self):
+        return len(self.rows)
+
+    @property
+    def n_cols(self):
+        return len(self.rows[0])
+
     def __str__(self):
         return "\n".join("".join(row) for row in self.rows)
+
 
 def solution(n):
     stack = [(0, 0)]
@@ -37,6 +46,15 @@ def solution(n):
                     stack.append((x+dx, y+dy))
     board.rows[0][0] = 'O'
     return board
+
+def solution(n):
+    import graph
+    board = Board()
+    g = graph.BoardGraph(board=board, n=n)
+    g.explore((0, 0))
+    board.rows[0][0] ='O'
+    return board
+
 
 if __name__ == '__main__':
     T = int(input())
