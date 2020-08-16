@@ -66,17 +66,20 @@ def min_efficiency(no_of_people, cost_of_table, families):
     heap = [(table_costs[0][j], -j) for j in range(no_of_people)]
     heapq.heapify(heap)
     # print(heap)
-    visited = set()
+    seen_costs = set()
     while heap:
         # print(heap)
         cost, person = heapq.heappop(heap)
         person = -person
+        while heap and heap[0][0] == cost:
+            heapq.heappop(heap)
+
         # print(cost, person)
-        visited.add((cost, person))
+        seen_costs.add(cost)
         if person == (no_of_people - 1):
             return cost
         for next_person in range(person + 1, no_of_people):
-            if (cost + table_costs[person+1][next_person], next_person) not in visited:
+            if (cost + table_costs[person+1][next_person]) not in seen_costs:
                 heapq.heappush(
                     heap,
                     (cost + table_costs[person+1][next_person], -next_person)
