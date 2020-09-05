@@ -12,12 +12,17 @@ for each player
 for the peak ranking month - this is max across all months so max(range(no_of_months), key=ratings[i][k])
 for peak rating - need to sort every month - then figure out the rating considering that if there is a tie
 all players with the same rating get the same ranking.
+----
+High level explanation of the solution:
+
+
 """
 
 
 def number_of_players_who_peak_ratings_not_same_as_peak_ranking(
     ratings, no_of_months, no_of_players
 ):
+    # this is a list comprehension that 
     max_rating = [
         max(range(no_of_months), key=lambda i: (ratings[player][i], -i))
         for player in range(no_of_players)
