@@ -1,22 +1,12 @@
 """
-Matrix with N rows and N columns. containing all integers from 1 to N**2
-Ada wants to sort the matrix in row-major order.
-for each valid i and j, she wants the cell (i, j) to contain the value
-(i-1)*N +j
-In one operation, Ada should choose an integer L and transpose the submatrix
-between rows 1 and L and the columns 1 and L inclusive.
-Find the smallest number of operations needed to sort the matrix
-Focus on the values at the each other edge
-and from behind. So the challenge is to make it in the right order.
-Ideas
-Idea
-Go through L from right to left.
-if any of the values at the edges is wrong, then make a swap.
-Actually do the transpose? Can focus on just the edges.
-[1, 2, 3]
-[4, 5, 6]
-[7, 8, 9]
-
+Link to (question)[https://www.codechef.com/SEPT20B/problems/ADAMAT]
+The key insight is that when a row or column is out of order, we want to sort
+it using the smallest number of operations. To do this, we could iterate from
+the largest submatrix to the smallest one and rotate whenever a given
+submatrix is out of order. Since the matrix will out of order n times, then
+it will be transposed at most n times. (it is possible it is less than n since
+one transpose operation might fix two out of order rows or columns).
+This is a greedy algorithm.
 """
 
 
@@ -42,10 +32,7 @@ def solution(matrix, n):
     count = 0
     for size in range(n, -1, -1):
         if not is_sorted_submatrix(matrix, size, n):
-            # print('pre-transpose ', matrix)
             transpose(matrix, size)
-            # print('post-transpose', matrix)
-            # print()
             count += 1
     return count
 
