@@ -1,11 +1,13 @@
 """
-Between every pair of runners, find out when they meet
-if they meet at all.
-sort these times, (time_meet, (a, b))
-assume the first athlete is infected and then run through the times.
-assume the second athlete is infected and then run through the times
-and so on.
-and find the one with the minimum number of people infected.
+Link to the (question)[https://www.codechef.com/SEPT20B/problems/COVID19B]
+The key idea is to go through every possible pair of people and save their
+meet time if they will meet + who met.
+
+Sort the meet times in ascending order of meet times.
+Then go through every person and simulate the meeting events and count
+how many people got infected when person i was the first to get infected.
+Then return the minimum number of people that can be infected and the maximum
+number of people that can be infected
 """
 
 
