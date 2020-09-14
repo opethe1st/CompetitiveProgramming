@@ -1,3 +1,20 @@
+"""
+Link to (question)[https://www.codechef.com/SEPT20B/problems/CRDGAME2]
+
+The key idea here is that the maximum never changes the pile it belongs to
+while every other number will change the pile it belongs to and reduce by 1
+So we can focus on the number of maximum values.
+if the number of maximum values is odd, it doesn't matter
+how the distribution is made, there will always be a winner since the numbers
+less than the maximum will reduce to zero and the sum of piles that contain
+just the maximum will always be different i.e a winner exist.
+the only case where they could be a draw is when the maximum occurs an
+even number of times. So we just need to compute the number of possible ways
+this could happen.
+That is combinations(n_max, n_max//2)*2**(len(cards) - n_max)
+So to find the distributions that cant end in draws we substract this
+from 2**len(card)
+"""
 from collections import Counter
 
 MOD = 1_000_000_007
